@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Locate Grocery Stores | Budget Bytes</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!--Google Maps API-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAruV7jgVj0gHwVIv66tazWCGyxOCTmtWc&callback=getUserLocation"
+      async defer></script>
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="landingPage.html">
+                <img src="images/logo.png" alt="Budget Bytes Logo" id="logo"/>
+                <img src="images/name.png" alt="Budget Bytes" id="name"/>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="landingPage.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="chatPage.html">Chat with Budget Bytes</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="locateStores.html">Locate Grocery Stores</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Recipes</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item disabled" aria-disabled="true">Your Recipes</a></li>
+                            <li><a class="dropdown-item" href="favoriteRecipesPage.html">Favorite Recipes</a></li>
+                            <li><a class="dropdown-item" href="savedRecipesPage.html">Saved Recipes</a></li>
+                            <li><a class="dropdown-item" href="recipeHistoryPage.html">Recipe History</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="exploreRecipesPage.html">Explore Other Recipes</a></li>
+                            <li><a class="dropdown-item" href="wordCount.html">Recipe Search</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="mealPlanPage.html">Meal Plan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="groceryList.html">Grocery List</a></li>
+                    <li class="nav-item"><a class="nav-link" href="cookingAssessment.html">Cooking Assessment</a></li>
+                    <li class="nav-item"><a class="nav-link" href="aboutPage.html">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    </header>
+    <div class="background">
+      <div class="address-container">
+        <div class="address-title">
+          <p>Find Nearby Stores</p>
+        </div>
+        <form id="address-form">
+          <div class="address">
+            <input type="text" id="address-input"
+              placeholder="Address Input Examples: [123 Main St], [City, State], OR [City, Country]">
+            <button class="btn btn-primary">Search</button>
+          </div>
+        </form>
+        <div id="map"></div>
+
+      </div>
+    </div>
+
+    <footer class="py-3 my-2">
+      <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+          <li class="nav-item"><a href="landingPage.html" class="nav-link px-2 text-muted">Home</a></li>
+          <li class="nav-item"><a href="chatPage.html" class="nav-link px-2 text-muted">Chat with Budget Bytes</a></li>
+          <li class="nav-item"><a href="locateStores.html" class="nav-link px-2 text-muted">Locate Grocery Stores</a></li>
+          <li class="nav-item"><a href="mealPlanPage.html" class="nav-link px-2 text-muted">Meal Plan</a></li>
+          <li class="nav-item"><a class="dropdown-toggle nav-link px-2 text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Recipes</a>
+                          <ul class="dropdown-menu">
+                              <!-- <li class=>Your recipes</li> -->
+                              <li><a class="dropdown-item disabled" aria-disabled="true">Your Recipes</a></li>
+                              <li><a class="dropdown-item" href="favoriteRecipesPage.html">Favorite Recipes</a></li>
+                              <li><a class="dropdown-item" href="savedRecipesPage.html">Saved Recipes</a></li>
+                              <li><a class="dropdown-item" href="recipeHistoryPage.html">Recipe History</a></li>
+                              <li><hr class="dropdown-divider"></li>
+                              <li><a class="dropdown-item" href="exploreRecipesPage.html">Explore Other Recipes</a></li>
+                              <li><a class="dropdown-item" href="wordCount.html">Recipe Search</a></li>
+                          </ul>
+          </li>
+          <li class="nav-item"><a href="groceryList.html" class="nav-link px-2 text-muted">Grocery List</a></li>
+          <li class="nav-item"><a href="cookingAssessment.html" class="nav-link px-2 text-muted">Cooking Assessment</a></li>
+          <li class="nav-item active"><a href="aboutPage.html" class="nav-link px-2 text-muted">About</a></li>
+      </ul>
+      <p class="text-center text-muted">© 2023 Budget Bytes</p>
+    </footer>
+
+    <script>
+      // OpenCage Geocoding API key
+      const OPENCAGE_GEOCODING_API_KEY = `0ade0ea9cd23417480b5240558db5f48`;
+
+      // Geoapify API key
+      const GEOAPIFY_API_KEY = `42d8ca6fe1d34c1ba2f69cac1818942e`;
+
+      function getUserLocation() {
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+              position => {
+                const latitude = position.coords.latitude;
+                const longitude = position.coords.longitude;
+                console.log('User Location:', latitude, longitude);
+                locationMap(latitude, longitude);
+              },
+              error => {
+                switch (error.code) {
+                  case error.PERMISSION_DENIED:
+                    console.error('User denied the request for Geolocation.');
+                    break;
+                  default:
+                    console.error('Error getting user location:', error.message);
+                    break;
+                }
+              }
+            );
+          } else {
+            console.error('Geolocation is not supported by this browser.');
+          }
+        }
+
+      // Function to handle the address form submission
+      document.getElementById('address-form').addEventListener('submit', function (e) {
+        e.preventDefault(); // Prevent the form from submitting and refreshing the page
+
+        // Get the user-entered address from the input field
+        const address = document.getElementById('address-input').value;
+
+        if (address.trim() === '') {
+          // Address field is empty, show an error message
+          alert('Please enter a valid address.');
+        } else {
+          fetch(`http://localhost:3001/stores/${encodeURIComponent(address)}`)
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Network response was not ok.');
+              }
+              return response.json();
+            })
+            .then(data => {
+              const { latitude, longitude } = data;
+              locationMap(latitude, longitude);
+            })
+            .catch(error => console.error('Error fetching location:', error));
+        }
+      });
+
+      function locationMap(latitude, longitude) {
+        fetch(`http://localhost:3001/stores/mapdata/${latitude}/${longitude}`)
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok.');
+            }
+            return response.json();
+          })
+          .then(data => {
+            console.log(data);
+            renderMap(data);
+          })
+          .catch(error => console.error('Error fetching map data:', error));
+      }
+
+      function renderMap(mapData) {
+        console.log('Map data:', mapData);
+
+        // Initialize map with center
+        const map = new google.maps.Map(document.getElementById('map'), {
+          center: mapData.center,
+          zoom: 13,
+        });
+          // Initialize InfoWindow
+          const infoWindow = new google.maps.InfoWindow();
+
+        // Add markers to the map
+        mapData.markers.forEach(markerData => {
+          const marker = new google.maps.Marker({
+            position: markerData.position,
+            map: map,
+            title: markerData.title,
+          });
+          // Add click event listener to the marker
+          marker.addListener('click', () => {
+              // Set the content of the InfoWindow
+              infoWindow.setContent(markerData.title);
+
+              // Open the InfoWindow at the marker's position
+              infoWindow.open(map, marker);
+          });
+        });
+      }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  </body>
+</html>

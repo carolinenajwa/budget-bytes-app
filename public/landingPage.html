@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Budget Bytes</title>
+        <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body id="landingPage">
+        <header>
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="landingPage.html">
+                        <img src="images/logo.png" alt="Budget Bytes Logo" id="logo"/>
+                        <img src="images/name.png" alt="Budget Bytes" id="name"/>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item"><a class="nav-link active" href="landingPage.html">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="chatPage.html">Chat with Budget Bytes</a></li>
+                            <li class="nav-item"><a class="nav-link" href="locateStores.html">Locate Grocery Stores</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Recipes</a>
+                                <ul class="dropdown-menu">
+                                    <!-- <li class=>Your recipes</li> -->
+                                    <li><a class="dropdown-item disabled" aria-disabled="true">Your Recipes</a></li>
+                                    <li><a class="dropdown-item" href="favoriteRecipesPage.html">Favorite Recipes</a></li>
+                                    <li><a class="dropdown-item" href="savedRecipesPage.html">Saved Recipes</a></li>
+                                    <li><a class="dropdown-item" href="recipeHistoryPage.html">Recipe History</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="exploreRecipesPage.html">Explore Other Recipes</a></li>
+                                    <li><a class="dropdown-item" href="wordCount.html">Recipe Search</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="mealPlanPage.html">Meal Plan</a></li>
+                            <li class="nav-item"><a class="nav-link" href="groceryList.html">Grocery List</a></li>
+                            <li class="nav-item"><a class="nav-link" href="cookingAssessment.html">Cooking Assessment</a></li>
+                            <li class="nav-item"><a class="nav-link" href="aboutPage.html">About</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <div class="main">
+            <section id="mainText">
+                <div id="appName">
+                    <p>Budget Bytes</p>
+                </div>
+                <h1>The Ultimate<br>Recipe<br>Guide</h1>
+                <a href="chatPage.html">
+                    <div id="chatButton">Start Chatting</div>
+                </a>
+            </section>
+            <div id="imageDesign">
+                <img src="images/main-design.png" id="abstractDesign" alt="abstractDesign"/>
+            </div>
+        </div>
+        <div class="details">
+            <div id="detailsText">
+                <h2>Discover why <span>Budget Bytes</span> is your culinary companion</h2>
+                <div id="visualDetails">
+                    <section id="sectionOneInfo">
+                        <div class="icons">
+                            <div class="circle">
+                                <img src="images/profile-user.png" alt="user icon" class="circleIcon">
+                            </div>
+                            <div class="dashed-line"></div>
+                            <div class="circle">
+                                <img src="images/location-pin.png" alt="location icon" class="circleIcon">
+                            </div>
+                        </div>
+                        <div class="iconsText">
+                            <div id="personalizedRecipes">
+                                <h4>Personalized Recipes</h4>
+                                <p>Every interaction is different, with our AI chatbot offering unique recipes tailored to your personal preferences.</p>
+                            </div>
+                            <h4>Local Ingredients</h4>
+                            <p>Don't have ingredients? Go to Locate Grocery Stores to find nearby stores, ensuring fresh ingredients for your meals.</p>
+                        </div>
+                    </section>
+                    <section id="sectionTwoInfo">
+                        <div class="icons">
+                            <div class="circle">
+                                <img src="images/wallet.png" alt="wallet icon" class="circleIcon">
+                            </div>
+                            <div class="dashed-line"></div>
+                            <div class="circle">
+                                <img src="images/messaging.png" alt="messaging icon" class="circleIcon">
+                            </div>
+                        </div>
+                        <div class="iconsText">
+                            <div id="affordableOptions">
+                                <h4>Affordable Options</h4>
+                                <p>We ensure that every recipe fits your budget without compromising on taste and quality.</p>
+                            </div>
+                            <h4>Interactive Experience</h4>
+                            <p>By guiding you through all steps of the recipe, our chatbot ensures a fun, interactive and educational cooking experience.</p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <div class="about">
+            <img src="images/about.jpg" alt="About Info">
+            <a href="aboutPage.html">
+                <div id="aboutButton">Learn more about Budget Bytes</div>
+            </a>
+        </div>
+
+
+        <footer class="py-3 my-2">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item"><a href="landingPage.html" class="nav-link px-2 text-muted">Home</a></li>
+                <li class="nav-item"><a href="chatPage.html" class="nav-link px-2 text-muted">Chat with Budget Bytes</a></li>
+                <li class="nav-item"><a href="locateStores.html" class="nav-link px-2 text-muted">Locate Grocery Stores</a></li>
+                <li class="nav-item"><a href="mealPlanPage.html" class="nav-link px-2 text-muted">Meal Plan</a></li>
+                <li class="nav-item"><a class="dropdown-toggle nav-link px-2 text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Recipes</a>
+                                <ul class="dropdown-menu">
+                                    <!-- <li class=>Your recipes</li> -->
+                                    <li><a class="dropdown-item disabled" aria-disabled="true">Your Recipes</a></li>
+                                    <li><a class="dropdown-item" href="favoriteRecipesPage.html">Favorite Recipes</a></li>
+                                    <li><a class="dropdown-item" href="savedRecipesPage.html">Saved Recipes</a></li>
+                                    <li><a class="dropdown-item" href="recipeHistoryPage.html">Recipe History</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="exploreRecipesPage.html">Explore Other Recipes</a></li>
+                                    <li><a class="dropdown-item" href="wordCount.html">Recipe Search</a></li>
+                                </ul>
+                </li>
+                <li class="nav-item"><a href="groceryList.html" class="nav-link px-2 text-muted">Grocery List</a></li>    
+                <li class="nav-item"><a href="cookingAssessment.html" class="nav-link px-2 text-muted">Cooking Assessment</a></li>
+                <li class="nav-item active"><a href="aboutPage.html" class="nav-link px-2 text-muted">About</a></li>
+            </ul>
+            <p class="text-center text-muted">© 2023 Budget Bytes</p>
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    </body>
+</html>

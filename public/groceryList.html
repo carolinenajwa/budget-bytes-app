@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Grocery List | Budget Bytes</title>
+        <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link rel="stylesheet" href="styles.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="grocery.js"></script>
+    </head>
+    <body id="groceryListPage">
+        <header>
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="landingPage.html">
+                        <img src="images/logo.png" alt="Budget Bytes Logo" id="logo"/>
+                        <img src="images/name.png" alt="Budget Bytes" id="name"/>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item"><a class="nav-link" href="landingPage.html">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="chatPage.html">Chat with Budget Bytes</a></li>
+                            <li class="nav-item"><a class="nav-link" href="locateStores.html">Locate Grocery Stores</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Recipes</a>
+                                <ul class="dropdown-menu">
+                                    <!-- <li class=>Your recipes</li> -->
+                                    <li><a class="dropdown-item disabled" aria-disabled="true">Your Recipes</a></li>
+                                    <li><a class="dropdown-item" href="favoriteRecipesPage.html">Favorite Recipes</a></li>
+                                    <li><a class="dropdown-item" href="savedRecipesPage.html">Saved Recipes</a></li>
+                                    <li><a class="dropdown-item" href="recipeHistoryPage.html">Recipe History</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="exploreRecipesPage.html">Explore Other Recipes</a></li>
+                                    <li><a class="dropdown-item" href="wordCount.html">Recipe Search</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="mealPlanPage.html">Meal Plan</a></li>
+                            <li class="nav-item"><a class="nav-link active" href="groceryList.html">Grocery List</a></li>
+                            <li class="nav-item"><a class="nav-link" href="cookingAssessment.html">Cooking Assessment</a></li>
+                            <li class="nav-item"><a class="nav-link" href="aboutPage.html">About</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <div class="mainGroceryList img-overlay">
+            <h1 id="groceryPageTitle">Create a Grocery List</h1>
+            <div id="groceryList" >
+                <div>
+                    <h4 id="loginHeader">Log In</h4>
+                    <p id="loginRequestText" class="idSubmission">Please enter your four-digit User ID to continue</p>
+                    <input id="idBox" type="number" class="form-control idSubmission" min="1000" max="9999" required>
+                    <button type="submit" id="loginButton" class="idSubmission btn-primary">Log in</button>
+                    <p id="loginMessageOutput"></p>
+                </div>  
+                <div id="theList">
+                    <h1 id="groceryHeader">Grocery List</h1>
+                    <p id="optionRequestText">Please select an option and then click "Submit"</p>
+                    <p id="groceryEmptyStatus">Grocery list is empty</p>
+                    <ul id="groceryListDisplay" class="list-group list-group-light"></ul>
+                    <p id="optionMessageOutput"></p>
+                    <button class="listOptions" id="addButton">Add item</button>
+                    <button class="listOptions" id="updateButton">Update item</button>
+                    <button class="listOptions" id="deleteItemButton">Delete item</button>
+                    <button class="listOptions" id="deleteListButton">Delete list</button> <!--make popup to make sure they are ok w this before deleting -->
+                    <br>
+
+                    <label class="crudInput" id="addName">Item name <input id="addNameInput" type="text" required></label>
+
+                    <label class="crudInput" id="updateName" >Item name <input id="updateNameInput" type="text" required></label>
+                    
+                    <br>
+                    
+                    <label class="crudInput" id="addQuantity">Item quantity <input id="addQuantityInput" type="number" min="1" max="9999" required></label>
+                    
+                    <label class="crudInput" id="updateQuantity">New item quantity <input id="updateQuantityInput" type="number" min="1" max="9999" required></label>
+                    
+                    <label class="crudInput" id="deleteName">Item name <input id="deleteNameInput" type="text" required></label>
+                    <br>
+                    <button type="submit" id="listChoice">Submit</button>
+                </div> 
+            </div>
+        </div>
+
+
+        <footer class="py-3 my-2">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item"><a href="landingPage.html" class="nav-link px-2 text-muted">Home</a></li>
+                <li class="nav-item"><a href="chatPage.html" class="nav-link px-2 text-muted">Chat with Budget Bytes</a></li>
+                <li class="nav-item"><a href="locateStores.html" class="nav-link px-2 text-muted">Locate Grocery Stores</a></li>
+                <li class="nav-item"><a href="mealPlanPage.html" class="nav-link px-2 text-muted">Meal Plan</a></li>
+                <li class="nav-item"><a class="dropdown-toggle nav-link px-2 text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Recipes</a>
+                                <ul class="dropdown-menu">
+                                    <!-- <li class=>Your recipes</li> -->
+                                    <li><a class="dropdown-item disabled" aria-disabled="true">Your Recipes</a></li>
+                                    <li><a class="dropdown-item" href="favoriteRecipesPage.html">Favorite Recipes</a></li>
+                                    <li><a class="dropdown-item" href="savedRecipesPage.html">Saved Recipes</a></li>
+                                    <li><a class="dropdown-item" href="recipeHistoryPage.html">Recipe History</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="exploreRecipesPage.html">Explore Other Recipes</a></li>
+                                    <li><a class="dropdown-item" href="wordCount.html">Recipe Search</a></li>
+                                </ul>
+                </li>
+                <li class="nav-item"><a href="groceryList.html" class="nav-link px-2 text-muted">Grocery List</a></li>    
+                <li class="nav-item"><a href="cookingAssessment.html" class="nav-link px-2 text-muted">Cooking Assessment</a></li>
+                <li class="nav-item active"><a href="aboutPage.html" class="nav-link px-2 text-muted">About</a></li>
+            </ul>
+            <p class="text-center text-muted">© 2023 Budget Bytes</p>
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    </body>
+</html>

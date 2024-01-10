@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Chat | Budget Bytes</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="chat.js"></script> <!-- Add this line -->
+    <script src="authentication.js"></script>
+</head>
+<body>
+
+<header>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="landingPage.html">
+                <img src="images/logo.png" alt="Budget Bytes Logo" id="logo"/>
+                <img src="images/name.png" alt="Budget Bytes" id="name"/>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="landingPage.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="chatPage.html">Chat with Budget Bytes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="locateStores.html">Locate Grocery Stores</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Recipes</a>
+                        <ul class="dropdown-menu">
+                            <!-- <li class=>Your recipes</li> -->
+                            <li><a class="dropdown-item disabled" aria-disabled="true">Your Recipes</a></li>
+                            <li><a class="dropdown-item" href="favoriteRecipesPage.html">Favorite Recipes</a></li>
+                            <li><a class="dropdown-item" href="savedRecipesPage.html">Saved Recipes</a></li>
+                            <li><a class="dropdown-item" href="recipeHistoryPage.html">Recipe History</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="exploreRecipesPage.html">Explore Other Recipes</a></li>
+                            <li><a class="dropdown-item" href="wordCount.html">Recipe Search</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="mealPlanPage.html">Meal Plan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="groceryList.html">Grocery List</a></li>
+                    <li class="nav-item"><a class="nav-link" href="cookingAssessment.html">Cooking Assessment</a></li>
+                    <li class="nav-item"><a class="nav-link" href="aboutPage.html">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+    <div class="background">
+        <!-- New User and Returning User Forms Container -->
+        <div class="user-forms-container">
+            <!-- User Type Selection -->
+            <div class="user-type-selection">
+                <button class="btn btn-primary" id="newUserButton">New User</button>
+                <button class="btn btn-primary" id="returningUserButton">Returning User</button>
+            </div>
+
+            <!-- New User Form -->
+            <div id="newUserFormContainer" class="form-container">
+                <form id="newUserForm">
+                <h2>New User Registration</h2>
+                    <div class="form-group">
+                        <label for="userLogID">Enter your 4-digit code:</label>
+                        <input type="number" id="userLogID" name="userLogID" class="form-control" min="1000" max="9999" required>
+                        <button class="btn btn-primary" type="button" style="margin-top: 15px;" id="checkCodeButton">Check Code Availability</button>
+                        <div id="codeCheckResult"></div>
+                    </div>
+
+                    <h3>Dietary Preferences:</h3>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label"><input type="checkbox" name="isVegan"> Vegan</label>
+                        <label class="checkbox-label"><input type="checkbox" name="isVegetarian"> Vegetarian</label>
+                        <label class="checkbox-label"><input type="checkbox" name="isDairyFree"> Dairy Free</label>
+                        <label class="checkbox-label"><input type="checkbox" name="isLowCarb"> Low Carb</label>
+                        <label class="checkbox-label"><input type="checkbox" name="isPescetarian"> Pescetarian</label>
+                    </div>
+                    <button type="submit" id="newUserSubmit" class="btn btn-primary">Submit</button>
+                    <div id="result"></div>
+                </form>
+            </div>
+
+            <!-- Returning User Form -->
+            <div id="returningUserFormContainer" class="form-container hidden">
+                <form id="returningUserForm">
+                    <h2>Returning User</h2>
+                    <div class="form-group">
+                        <label for="returningUserLogID">Enter your 4-digit code:</label>
+                        <input type="number" id="returningUserLogID" class="form-control" min="1000" max="9999" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <!-- Delete User Button -->
+                    <button type="button" id="deleteUserButton" class="btn btn-danger">Delete User</button>
+
+                    <div id="returningResult"></div>
+                </form>
+            </div>
+            <!-- Update User Preferences Form -->
+            <div id="updateUserFormContainer" class="form-container hidden">
+                <form id="updateUserForm">
+                    <h2>Update Dietary Preferences</h2>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label"><input type="checkbox" name="updateIsVegan"> Vegan</label>
+                        <label class="checkbox-label"><input type="checkbox" name="updateIsVegetarian"> Vegetarian</label>
+                        <label class="checkbox-label"><input type="checkbox" name="updateIsDairyFree"> Dairy Free</label>
+                        <label class="checkbox-label"><input type="checkbox" name="updateIsLowCarb"> Low Carb</label>
+                        <label class="checkbox-label"><input type="checkbox" name="updateIsPescetarian"> Pescetarian</label>
+                    </div>
+                    <button class="btn btn-primary" id="updateDataButton" type="button">Submit Updated Data</button>
+                    <div id="updateResult"></div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Chat Container -->
+        <div class="chat-container">
+            <div id="chatTitle">
+                <p>Chat with Budget Bytes</p>
+            </div>
+
+            <ul id="conversation">
+                <!-- Messages will be appended here -->
+            </ul>
+
+            <div class="chat-input">
+                <input type="text" id="message" placeholder="Type your message...">
+                <button class="btn btn-primary" id="send">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="py-3 my-2">
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+            <li class="nav-item"><a href="landingPage.html" class="nav-link px-2 text-muted">Home</a></li>
+            <li class="nav-item"><a href="chatPage.html" class="nav-link px-2 text-muted">Chat with Budget Bytes</a></li>
+            <li class="nav-item"><a href="locateStores.html" class="nav-link px-2 text-muted">Locate Grocery Stores</a></li>
+            <li class="nav-item"><a href="mealPlanPage.html" class="nav-link px-2 text-muted">Meal Plan</a></li>
+            <li class="nav-item"><a class="dropdown-toggle nav-link px-2 text-muted" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Recipes</a>
+                            <ul class="dropdown-menu">
+                                <!-- <li class=>Your recipes</li> -->
+                                <li><a class="dropdown-item disabled" aria-disabled="true">Your Recipes</a></li>
+                                <li><a class="dropdown-item" href="favoriteRecipesPage.html">Favorite Recipes</a></li>
+                                <li><a class="dropdown-item" href="savedRecipesPage.html">Saved Recipes</a></li>
+                                <li><a class="dropdown-item" href="recipeHistoryPage.html">Recipe History</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="exploreRecipesPage.html">Explore Other Recipes</a></li>
+                                <li><a class="dropdown-item" href="wordCount.html">Recipe Search</a></li>
+                            </ul>
+            </li>
+            <li class="nav-item"><a href="groceryList.html" class="nav-link px-2 text-muted">Grocery List</a></li>    
+            <li class="nav-item"><a href="cookingAssessment.html" class="nav-link px-2 text-muted">Cooking Assessment</a></li>
+            <li class="nav-item active"><a href="aboutPage.html" class="nav-link px-2 text-muted">About</a></li>
+        </ul>
+        <p class="text-center text-muted">© 2023 Budget Bytes</p>
+    </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
