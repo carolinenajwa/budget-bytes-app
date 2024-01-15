@@ -1,4 +1,5 @@
 # Budget-Bytes: A Recipe AI Assistant for College Students
+<img width="1407" alt="Screenshot 2024-01-15 at 1 16 51 PM" src="https://github.com/carolinenajwa/budget-bytes-app/assets/82617020/a6e7e9d2-75e2-4dcf-9e01-8986a258897a">
 
 ## Description:
 Budget-Bytes is a web-based chat assistant that offers personalized culinary experiences for college students. It provides effortless interaction and customized meal suggestions based on user queries and available ingredients, focusing on affordability and simplicity.
